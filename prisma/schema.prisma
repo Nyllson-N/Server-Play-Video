@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  Id           String   @id @unique
+  Money        Int      @default(0) 
+  DailyCollect DateTime @default(now())
+}
+
+model Guild {
+  Id     String @id @unique @default("")
+  Prefix String @default("%")
+  Admins String @default("[]")
+}
